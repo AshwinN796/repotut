@@ -95,10 +95,12 @@ class NewsDetailActivity: BaseActivity<ActivityNewsDetailBinding>() {
     private fun setUpUiData(newsData: NewsHeadingItem) {
         bindView?.newsImage?.loadImageFromUrl(this,newsData.urlToImage,R.mipmap.ic_launcher)
         bindView?.headerText?.text = newsData.title
-        bindView?.descriptionText?.text = buildSpannedString {
-            append(newsData.description)
-            inSpans(ForegroundColorSpan(ContextCompat.getColor(bindView?.descriptionText?.context!!,R.color.grey_400))) {
-                append(" Read More")
+        if (newsData.description != null) {
+            bindView?.descriptionText?.text = buildSpannedString {
+                append(newsData.description)
+                inSpans(ForegroundColorSpan(ContextCompat.getColor(bindView?.descriptionText?.context!!,R.color.grey_400))) {
+                    append(" Read More")
+                }
             }
         }
     }
