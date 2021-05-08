@@ -13,7 +13,7 @@ android {
     compileSdkVersion(AndroidSdk.compileSDK)
 
     defaultConfig {
-        applicationId = "com.maaldhakka.suppyregister"
+        applicationId = "com.repoenerytut.repotut"
         minSdkVersion(AndroidSdk.minSDK)
         targetSdkVersion(AndroidSdk.targetSDK)
         versionCode = Versions.playStoreCode

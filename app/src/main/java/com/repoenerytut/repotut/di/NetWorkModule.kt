@@ -1,5 +1,6 @@
 package com.repoenerytut.repotut.di
 
+import android.content.Context
 import com.repoenerytut.repotut.data.remote.RestService
 import com.repoenerytut.repotut.data.remote.RestServiceFactory
 import dagger.Module
@@ -20,6 +21,11 @@ object NetWorkModule {
     @Provides
     fun provideRestService() : RestService {
         return RestServiceFactory.makeRestService()
+    }
+
+    @Provides
+    fun provideContext(): Context {
+        return provideContext()
     }
 
 }

@@ -8,6 +8,7 @@ import com.repoenerytut.repotut.R
 import com.repoenerytut.repotut.data.remote.factory.NetworkResponse
 import com.repoenerytut.repotut.databinding.ActivityNewsHeadingBinding
 import com.repoenerytut.repotut.extension.gone
+import com.repoenerytut.repotut.extension.toast
 import com.repoenerytut.repotut.extension.visible
 import com.repoenerytut.repotut.ui.base.BaseActivity
 import com.repoenerytut.repotut.ui.newsheading.adapter.NewsHeadingAdapter
@@ -44,6 +45,12 @@ class NewsHeadingList: BaseActivity<ActivityNewsHeadingBinding>() {
 
                 is NetworkResponse.Error -> {
                     showProgressbar(false)
+                    if (result.code == 0) {
+                        toast("Network Error")
+                    }else {
+                        toast(result.error?.toString()!!)
+
+                    }
                 }
 
                 is NetworkResponse.Success -> {
