@@ -15,8 +15,7 @@ import kotlinx.coroutines.launch
  * Created by Ashwin Nirmale on 07/05/21.
  */
 class NewsViewModel @ViewModelInject constructor(
-    private val newsHeadlineCase: NewsHeadlineCase,
-    private val networkHelper: NetworkHelper
+    private val newsHeadlineCase: NewsHeadlineCase
 ): BaseViewModel(){
 
     val newHeadingLiveData = MutableLiveData<NetworkResponse<NewsHeadingResponse>>()
@@ -24,11 +23,7 @@ class NewsViewModel @ViewModelInject constructor(
     fun getNewsHeadingList() {
         newHeadingLiveData.postValue(NetworkResponse.Loading())
         viewModelScope.launch {
-            if (networkHelper.isNetworkConnected()) {
-                newHeadingLiveData.postValue(newsHeadlineCase.invoke(null))
-            }else {
-                newHeadingLiveData.postValue(NetworkResponse.Error(null,NetworkErrorException(),0,NetworkResponse.ErrorType.NETWORK))
-            }
+            newHeadingLiveData.postValue(newsHeadlineCase.invoke(null))
         }
     }
 

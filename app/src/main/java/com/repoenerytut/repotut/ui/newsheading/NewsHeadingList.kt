@@ -45,11 +45,11 @@ class NewsHeadingList: BaseActivity<ActivityNewsHeadingBinding>() {
 
                 is NetworkResponse.Error -> {
                     showProgressbar(false)
+
                     if (result.code == 0) {
                         toast("Network Error")
                     }else {
                         toast(result.error?.toString()!!)
-
                     }
                 }
 

@@ -68,6 +68,11 @@ android {
             applicationIdSuffix = ".stage"
         }
     }
+
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 
@@ -81,6 +86,7 @@ dependencies {
 
     //Test
     testImplementation(TestLibraries.junit4)
+    testImplementation(group = "org.slf4j",name = "slf4j-simple",version = "1.6.2")
 //    testImplementation(TestLibraries.mockitoCore)
 //    testImplementation(TestLibraries.mockitoInline)
     testImplementation(TestLibraries.mockitoKotlin)
